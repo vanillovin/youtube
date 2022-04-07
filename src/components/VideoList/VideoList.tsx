@@ -2,6 +2,7 @@ import React from 'react';
 
 import { VideosType } from '../../App';
 import VideoItem from '../VideoItem/VideoItem';
+import styles from './VideoList.module.css';
 
 interface VideosProps {
   videos: VideosType[]
@@ -9,10 +10,10 @@ interface VideosProps {
 
 const VideoList = ({ videos }: VideosProps) => {
   return (
-    <ul>
-      {videos.map((video) => (
-        <VideoItem key={video.id} video={video} />
-        ))}
+    <ul className={styles.videos}>
+      {videos.map(video => (
+        <VideoItem key={video.id} snippet={video.snippet} />
+      ))}
     </ul>
   )
 };

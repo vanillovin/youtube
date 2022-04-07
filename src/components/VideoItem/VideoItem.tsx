@@ -1,8 +1,27 @@
 import React from 'react';
 
-const VideoItem = ({ video }: any) => {
+import { SnippetType } from '../../App';
+import styles from './VideoItem.module.css';
+
+interface SnippetProps {
+  snippet: SnippetType
+}
+
+const VideoItem = ({ snippet }: SnippetProps) => {
   return (
-    <h1>{video.snippet.title}</h1>
+    <li className={styles.container}>
+      <div className={styles.video}>
+        <img
+          className={styles.thumbnail}
+          src={snippet.thumbnails.medium.url}
+          alt="video thumbnail"
+        />
+        <div className={styles.metadata}>
+          <p className={styles.title}>{snippet.title}</p>
+          <p className={styles.channel}>{snippet.channelTitle}</p>
+        </div>
+      </div>
+    </li>
   )
 };
 

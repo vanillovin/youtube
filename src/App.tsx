@@ -2,23 +2,35 @@ import React, { useEffect, useState } from 'react';
 
 import VideoList from './components/VideoList/VideoList';
 
+type ThumnailsType = {
+  url: string,
+  width: number,
+  height: number
+}
+
+export type SnippetType = {
+  categoryId: string,
+  channelId: string,
+  channelTitle: string,
+  defaultAudioLanguage: string,
+  description: string,
+  liveBroadcastContent: string,
+  localized: { title: string, description: string },
+  publishedAt: string,
+  tags: string[],
+  thumbnails: {
+    default: ThumnailsType,
+    high: ThumnailsType,
+    medium: ThumnailsType,
+  },
+  title: string
+}
+
 export type VideosType = { 
   kind: string, 
   etag: string, 
   id: string,
-  snippet: {
-    categoryId: string,
-    channelId: string,
-    channelTitle: string,
-    defaultAudioLanguage: string,
-    description: string,
-    liveBroadcastContent: string,
-    localized: { title: string, description: string },
-    publishedAt: string,
-    tags: string[],
-    thumbnails: object[],
-    title: string
-  }
+  snippet: SnippetType
 };
 
 function App() {
