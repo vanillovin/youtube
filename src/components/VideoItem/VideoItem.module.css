@@ -1,5 +1,5 @@
 .container {
-  width: 45%;
+  width: 50%;
   padding: 0.3em;
 }
 
@@ -25,13 +25,18 @@
 }
 
 .metadata {
-  margin: 0 0.4em ;
+  margin: 0 0.6em;
 }
 
 .title,
 .channel {
   margin: 0;
   font-size: 0.9rem;
+}
+
+.title {
+  font-weight: 500;
+  line-height: 1.1;
 }
 
 .channel {
