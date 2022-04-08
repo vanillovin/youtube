@@ -1,0 +1,61 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.6rem;
+  padding: 0.6em 1em;
+  background: black;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: 1em;
+}
+
+.logo img {
+  width: 1.7rem;
+  margin-right: 2px;
+}
+
+.logo h1 {
+  font-size: 1.2rem;
+}
+
+.scon {
+  width: 80%;
+  height: 100%;
+  display: flex;
+}
+
+.input {
+  border: 0;
+  font-size: 1rem;
+  outline: 0;
+  padding: 5px;
+  flex-basis: 100%;
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+  background-color: darkgray;
+  outline: 0;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonImg {
+  width: 18px;
+  height: 18px;
+}
+
+.profile {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-left: 8px;
+}

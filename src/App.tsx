@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import styles from './app.module.css';
+import SearchHeader from './components/SearchHeader/SearchHeader';
 import VideoList from './components/VideoList/VideoList';
 
 type ThumnailsType = {
@@ -33,23 +35,24 @@ export type VideosType = {
   snippet: SnippetType
 };
 
-function App() {
+function App({ youtube }: any) {
   const [videos, setVideos] = useState<VideosType[]>([]);
-
+  const search = (query: string) => {
+    youtube
+      .search(query) //
+      .then((videos: VideosType[]) => setVideos(videos));
+  };
   useEffect(() => {
-    fetch(
-      'https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyAtrSZkopq--QXlpEYQ5SrM9Kg5TZlZMl0',
-      {
-        method: 'GET',
-        redirect: 'follow',
-      }
-    )
-      .then(response => response.json())
-      .then(result => setVideos(result.items))
-      .catch(error => console.log('error', error));
+    youtube
+      .mostPopular() //
+      .then((videos: VideosType[]) => setVideos(videos));
   }, []);
-
-  return <VideoList videos={videos} />;
+  return (
+    <div className={styles.app}>
+      <SearchHeader onSearch={search} />
+      <VideoList videos={videos} />
+    </div>
+  );
 }
 
 export default App;
