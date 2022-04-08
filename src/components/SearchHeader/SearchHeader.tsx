@@ -4,9 +4,10 @@ import styles from './SearchHeader.module.css';
 
 interface SearchHeaderProps {
   onSearch(query: string): void;
+  onLogoClick(): void;
 }
 
-const SearchHeader = ({ onSearch }: SearchHeaderProps) => {
+const SearchHeader = ({ onSearch, onLogoClick }: SearchHeaderProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const handleSearch = () => {
     if (inputRef.current !== null) {
@@ -14,17 +15,20 @@ const SearchHeader = ({ onSearch }: SearchHeaderProps) => {
       onSearch(value);
     }
   };
+
   const onClick = () => {
     handleSearch();
   };
+
   const onKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       handleSearch();
     }
   };
+
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      <div className={styles.logo} onClick={onLogoClick}>
         <img className={styles.img} src="/images/logo.png" alt="logo" />
         <h1 className={styles.title}>Youtube</h1>
       </div>

@@ -1,15 +1,22 @@
 import React from 'react';
 
-import { SnippetType } from '../../App';
+import { VideoType } from '../../App';
 import styles from './VideoItem.module.css';
 
-interface SnippetProps {
-  snippet: SnippetType
+interface VideoProps {
+  video: VideoType;
+  onVideoClick(video: VideoType): void;
+  display: string;
 }
 
-const VideoItem = ({ snippet }: SnippetProps) => {
+const VideoItem = ({ video, video: { snippet }, onVideoClick, display }: VideoProps) => {
+  console.log(video)
+  const displayType = display === 'list' ? styles.list : styles.grid;
   return (
-    <li className={styles.container}>
+    <li
+      className={`${styles.container} ${displayType}`}
+      onClick={() => onVideoClick(video)}
+    >
       <div className={styles.video}>
         <img
           className={styles.thumbnail}
