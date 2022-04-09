@@ -1,3 +1,6 @@
+const baseURL = 'https://www.googleapis.com/youtube/v3';
+const params = 'part=snippet&maxResults=26&regionCode=KR';
+
 class Youtube {
   key: string;
   getRequestOptions: object;
@@ -11,7 +14,7 @@ class Youtube {
 
   async mostPopular() {
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=26&key=${this.key}`,
+      `${baseURL}/videos?${params}&chart=mostPopular&key=${this.key}`,
       this.getRequestOptions
     );
     const result = await response.json();
@@ -20,7 +23,7 @@ class Youtube {
 
   async search(query: string) {
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=26&q=${query}&type=video&key=${this.key}`,
+      `${baseURL}/search?${params}&q=${query}&type=video&key=${this.key}`,
       this.getRequestOptions
     );
     const result = await response.json();

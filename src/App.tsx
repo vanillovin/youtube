@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import styles from './app.module.css';
 import SearchHeader from './components/SearchHeader/SearchHeader';
@@ -45,12 +45,12 @@ function App({ youtube }: any) {
     setSelectedVideo(video);
   };
 
-  const search = (query: string) => {
+  const search = useCallback((query: string) => {
     setSelectedVideo(null);
     youtube
       .search(query) //
       .then((videos: VideoType[]) => setVideos(videos));
-  };
+  }, []); // 한 번만 만들고 계속 동일한 오브젝트를 반복해서 씀
   
   const fetchPopularVideos = () => {
     youtube
@@ -60,7 +60,7 @@ function App({ youtube }: any) {
 
   useEffect(() => {
     fetchPopularVideos();
-  }, []);
+  }, [youtube]);
 
   const onLogoClick = () => {
     setSelectedVideo(null);
